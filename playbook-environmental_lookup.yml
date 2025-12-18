@@ -1,0 +1,21 @@
+---
+- name: Define Variables from Environmental Variables
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Define fav_animal from environmental variable
+      set_fact:
+        fav_animal: "{{ lookup('env', 'FAV_ANIMAL') }}"
+
+    - name: Define fav_color from environmental variable
+      set_fact:
+        fav_color: "{{ lookup('env', 'FAV_COLOR') }}"
+
+    - name: Define fav_nintendo_game from environmental variable
+      set_fact:
+        fav_nintendo_game: "{{ lookup('env', 'FAV_NINTENDO_GAME') }}"
+
+    - name: Display defined variables
+      debug:
+        msg: "Favorite Animal: {{ fav_animal }}, Favorite Color: {{ fav_color }}, Favorite Nintendo Game: {{ fav_nintendo_game }}"
